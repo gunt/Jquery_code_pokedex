@@ -3,11 +3,27 @@ var pokemonRepository = (function () {
     var repository = [];
     var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=50';
 
+
+    // Ajax method jQuery
+    // function loadList() {
+    //     return fetch(apiUrl).then(function (response) {
+    //         return response.json();
+    //     }).then(function (json) {
+    //         json.results.forEach(function (item) {
+    //             var pokemon = {
+    //                 name: item.name,
+    //                 detailsUrl: item.url
+    //             };
+    //             add(pokemon);
+    //         });
+    //     }).catch(function (e) {
+    //         console.error(e);
+    //     });
+    // }
+
     function loadList() {
-        return fetch(apiUrl).then(function (response) {
-            return response.json();
-        }).then(function (json) {
-            json.results.forEach(function (item) {
+        return $.ajax(apiUrl).then(function (response) {
+            results.results.forEach(function (item) {
                 var pokemon = {
                     name: item.name,
                     detailsUrl: item.url
@@ -18,6 +34,15 @@ var pokemonRepository = (function () {
             console.error(e);
         });
     }
+
+
+
+
+
+
+
+
+
 
     function addListItem(pokemon) {
 
