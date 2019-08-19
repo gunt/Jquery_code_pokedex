@@ -25,11 +25,11 @@ Text Color (Dark Gray): #2b2b2b;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-weight: var(--font-weight);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  background-color: rgb(45, 59, 80);
+  background-color: #9DBAD5;
   color: #ffffff;
 }
 
@@ -152,7 +152,7 @@ a:active {
 button {
   border: none;
   font-family: inherit;
-  background-color: #BC5653;
+  background-color: #8FC1A9;
   color: white;
   text-decoration: none;
   padding: 17px;
