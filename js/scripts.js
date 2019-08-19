@@ -23,14 +23,14 @@ var pokemonRepository = (function () {
 
     function loadList() {
         return $.ajax(apiUrl).then(function (response) {
-            results.results.forEach(function (item) {
+            response.results.forEach(function (item) {
                 var pokemon = {
                     name: item.name,
                     detailsUrl: item.url
                 };
                 add(pokemon);
             });
-        }).catch(function (e) {
+        }).catch(function(e) {
             console.error(e);
         });
     }
