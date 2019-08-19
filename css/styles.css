@@ -25,11 +25,11 @@ Text Color (Dark Gray): #2b2b2b;
 }
 
 body {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: var(--font-weight);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  background-color: #9DBAD5;
+  background-color: rgb(45, 59, 80);
   color: #ffffff;
 }
 
@@ -93,10 +93,12 @@ h3 {
   border-radius: 50%;
 }
 
-#pokeH-style {
-  color: #4cff00;
-  font-weight: 980;
-  font-style: italic;
+.pokemonimage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: auto;
 }
 
 /* Styling Header Navigation */
@@ -152,12 +154,12 @@ a:active {
 button {
   border: none;
   font-family: inherit;
-  background-color: #8FC1A9;
+  background-color: rgb(83, 130, 192);
   color: white;
   text-decoration: none;
   padding: 17px;
   font-size: 18px;
-  border-radius: 2px;
+  border-radius: 22px;
   border-bottom: 3px solid rgba(129, 72, 72, 0.3);
 }
 
@@ -243,8 +245,12 @@ button:focus {
 }
 
 #modal-container {
-  /* display: none; */
-  position: fixed;
+  display: none;
+}
+
+#modal-container.is-visible {
+ display: grid;
+ position: fixed;
   padding: 20px;
   box-sizing: border-box;
   top: 0;
@@ -260,23 +266,19 @@ button:focus {
   overflow: auto; 
   
   /* this is used to center the modal */
-  display: none;
   text-align: center;
-}
-
-#modal-container.is-visible {
- display: grid;
 }
 
 .modal {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
-  background: rgb(55, 64, 92);
+  background: rgb(170, 175, 187);
   padding: 15px;
   width: 100%;
   max-width: 700px;
   text-align: center;
+  border-radius: 20px;
 }
 
 .modal-close {
