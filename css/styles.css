@@ -25,11 +25,11 @@ Text Color (Dark Gray): #2b2b2b;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Baloo', cursive;
   font-weight: var(--font-weight);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  background-color: rgb(45, 59, 80);
+  background-color: rgb(58, 81, 114);
   color: #ffffff;
 }
 
@@ -151,15 +151,15 @@ a:active {
 }
 
 /* Styling Button */
-button {
+/* button {
   border: none;
   font-family: inherit;
-  background-color: rgb(83, 130, 192);
+  background-color: #C9A365;
   color: white;
   text-decoration: none;
   padding: 17px;
-  font-size: 18px;
-  border-radius: 22px;
+  font-size: 25px;
+  border-radius: 2px;
   border-bottom: 3px solid rgba(129, 72, 72, 0.3);
 }
 
@@ -172,6 +172,56 @@ button:focus {
 .button__secondary {
   background-color: #e0b354;
   color: var(--text-color);
+} */
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+/* Custom */
+button {
+  display: inline-block;
+  position: relative;
+  padding: 20px 38px;
+  top: 0;
+  font-size: 30px;
+  font-family: 'Baloo', cursive;
+  border-radius: 4px;
+  border-bottom: 1px solid rgba( 28, 227, 125, 0.5 );
+  background: rgb(117, 189, 157);
+  color: #fff;
+  box-shadow: 0px 0px 0px #4A6890;
+  
+  -webkit-transform: translateZ(0);
+     -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+          transform: translateZ(0);
+  
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+      -ms-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+
+button:hover {
+  top: -10px;
+  box-shadow: 0px 7px 7px #4A6890;
+  
+  -webkit-transform: rotateX(20deg);
+     -moz-transform: rotateX(20deg);
+      -ms-transform: rotateX(20deg);
+          transform: rotateX(20deg);
+}
+
+button:active {
+  top: 0px;
+  box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.0 );
+  background: rgba( 20, 224, 133, 1 );
 }
 
 /* Styling Footer*/
@@ -211,8 +261,8 @@ button:focus {
 }
 
 .pokemonContainer {
-  width: 100%;
-  max-width: 700px;
+  /* width: 100%; */
+  max-width: 570px;
   min-width: 300px;
   margin: 0 auto;
   padding: 15px 10px;
@@ -273,7 +323,7 @@ button:focus {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
-  background: rgb(170, 175, 187);
+  background: #4A6890;
   padding: 15px;
   width: 100%;
   max-width: 700px;
@@ -286,13 +336,20 @@ button:focus {
   -webkit-appearance: none;
   border: 0;
   background: none;
-  color: #777;
+  color: #FFFFFF;
   text-decoration: underline;
+  font-size: 17px;
 }
 
 .modal h1 {
-  margin-top: 0;
+  width: auto;
+  margin: 0px auto;
+  color: #fff;
   text-align: center;
+  padding: 15px;
+  font-size: 24px;
+  background: #4A6890;
+  border-radius: 22px;
 }
 
 .modal p {
