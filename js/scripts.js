@@ -48,7 +48,8 @@ var pokemonRepository = (function () {
           showModal(pokemon);
         });
       }
-
+    
+    // pokemon function add object  
     function add(pokemon) {
         if (typeof repository === 'object') {
             repository.push(pokemon)
@@ -115,7 +116,7 @@ var pokemonRepository = (function () {
     }
 
 
-    window.addEventListener('keydown', (e) => {
+    window.addEventListener('keydown',(e) => {
         var $modalContainer = $('#modal-container');
         if (e.key === 'Escape' && $modalContainer.hasClass('is-visible')) {
             hideModal();
@@ -124,12 +125,10 @@ var pokemonRepository = (function () {
 
 
     // var closestElement = element.closest(selectors);
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
 
     var $modalContainer = $('#modal-container');
     $modalContainer.on('click', function(event){
-        // Since this is also triggered when clicking INSIDE the modal container,
-        // We only want to close if the user clicks directly on the overlay
-        //var target = e.target;
         if ($(event.target).closest ('#modal-container').length) {
             hideModal();
         }
