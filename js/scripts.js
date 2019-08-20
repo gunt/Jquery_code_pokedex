@@ -82,12 +82,12 @@
             $closeButtonElement.on('click', hideModal);
 
             var $nameElement = $('<h1>' + item.name + '</h1>');
-            
+
             // pokemon image class fixed it - not recognize pokemon as item
-            var $imageElement = $('<img class = "pokemonimage">');  
+            var $imageElement = $('<img class = "pokemonimage">');
             $imageElement.attr('src', item.imageUrl);
 
-            
+
             var $typesElement = $('<p>' + 'height : ' + item.height + '</p>');
 
             //appending 
@@ -131,7 +131,7 @@
             loadDetails: loadDetails,
             showModal: showModal,
             hideModal: hideModal
-          };
+        };
     })();
 
     pokemonRepository.loadList().then(function () {
