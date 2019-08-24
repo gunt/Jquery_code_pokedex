@@ -57,6 +57,7 @@
             return repository;
         }
 
+
         function loadDetails(pokemon) {
             var url = pokemon.detailsUrl;
             return $.ajax(url).then(function (response) {
@@ -72,6 +73,9 @@
         //clearing all existing modal content  // jQuery major attention on classes
         function showModal(item) {
             var $modalContainer = $('#modal-container');
+
+            
+
             $modalContainer.text('');
             var $modal = $('<div class = "modal">');
 
@@ -115,8 +119,18 @@
         // var closestElement = element.closest(selectors);
         // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
 
-        var $modalContainer = $('#modal-container');
-        $modalContainer.on('click', function (event) {
+
+        // var $modalContainer = $('#modal-container');
+// and then:
+// $modalContainer.on('click', function (event) {...
+
+//But with jQuery you can do it directly, without creating a var:
+
+//$('#modal-container').on('click', function (event) {
+
+        //var $modalContainer = $('#modal-container');
+
+        $('modalContainer').on('click', function (event) {
             if ($(event.target).closest('#modal-container').length) {
                 hideModal();
             }
