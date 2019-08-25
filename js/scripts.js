@@ -21,11 +21,11 @@
 
         // function addListItem pokemon //button // append
         function addListItem(pokemon) {
-            var $listItemElement = $('<listItemElement class = "pokemon-list__item">' + '<li>');
+            $listItemElement = $('<listItemElement class = "pokemon-list__item">' + '<li>');
             $('ul').append($listItemElement);
 
             // !important/ atention to learn purpose // caused major confusion in structure index.html review
-            var $button = $(
+            $button = $(
                 '<button class = "button">' + pokemon.name + '</button>'
             );
 
@@ -72,31 +72,24 @@
 
         //clearing all existing modal content  // jQuery major attention on classes
         function showModal(item) {
-            var $modalContainer = $('#modal-container');
-
-            //$ ('#modal-container').on('showMOdal', function(item){
-
-            //$('modalContainer').on('click', function (event) {
+            var $modalContainer =
 
 
-            //$('#modal-container').on('click', function (event) {
-            $modalContainer.text('');
-            var $modal = $('<div class = "modal">');
+            $('#modal-container').text('');
+            $modal = $('<div class = "modal">');
 
             //close button
-            var $closeButtonElement = $(
-                '<button class = "modal-close"> Close </button>'
-            );
+            $closeButtonElement = $('<button class = "modal-close"> Close </button>');
             $closeButtonElement.on('click', hideModal);
 
-            var $nameElement = $('<h1>' + item.name + '</h1>');
+            $nameElement = $('<h1>' + item.name + '</h1>');
 
             // pokemon image class fixed it - not recognize pokemon as item
-            var $imageElement = $('<img class = "pokemonimage">');
+            $imageElement = $('<img class = "pokemonimage">');
             $imageElement.attr('src', item.imageUrl);
 
 
-            var $typesElement = $('<p>' + 'height : ' + item.height + '</p>');
+            $typesElement = $('<p>' + 'height : ' + item.height + '</p>');
 
             //appending 
             $modal.append($closeButtonElement);
@@ -107,26 +100,16 @@
             $modalContainer.addClass('is-visible'); //class
         }
 
-       
+
         function hideModal() {
-            //var $modalContainer = $('#modal-container');
             $('#modal-container').removeClass('is-visible');
         }
 
-        $(document).on('keydown', function(event) {
-            //var $modalContainer = $('#modal-container');
+        $(document).on('keydown', function (event) {
             if (event.key === 'Escape' && $('#modal-container').hasClass('is-visible')) {
                 hideModal();
             }
         });
-
-        // $(document).on( 
-        //     'keydown', function(event) { 
-        //       if (event.key == "Escape") { 
-        //           alert('Esc key pressed.'); 
-        //       } 
-        //   }); 
-
 
         // $('#modal-container').on('click', function (event) {
 
