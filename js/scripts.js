@@ -57,7 +57,6 @@
             return repository;
         }
 
-
         function loadDetails(pokemon) {
             var url = pokemon.detailsUrl;
             return $.ajax(url).then(function (response) {
@@ -73,7 +72,6 @@
         //clearing all existing modal content  // jQuery major attention on classes
         function showModal(item) {
             var $modalContainer =
-
 
             $('#modal-container').text('');
             $modal = $('<div class = "modal">');
@@ -97,9 +95,8 @@
             $modal.append($imageElement);
             $modal.append($typesElement);
             $modalContainer.append($modal);
-            $modalContainer.addClass('is-visible'); //class
+            $modalContainer.addClass('is-visible'); 
         }
-
 
         function hideModal() {
             $('#modal-container').removeClass('is-visible');
