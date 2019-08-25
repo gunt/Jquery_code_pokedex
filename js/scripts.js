@@ -107,32 +107,25 @@
             $modalContainer.addClass('is-visible'); //class
         }
 
-
-        //$('.notification').addClass('bright-red').delay(300).removeClass('bright-red')
-        // Use the syntax $.fn.myFunction=function(){}
-
+       
         function hideModal() {
-            var $modalContainer = $('#modal-container');
-            $modalContainer.removeClass('is-visible');
+            //var $modalContainer = $('#modal-container');
+            $('#modal-container').removeClass('is-visible');
         }
 
-        window.addEventListener('keydown', (e) => {
-            var $modalContainer = $('#modal-container');
-            if (e.key === 'Escape' && $modalContainer.hasClass('is-visible')) {
+        $(document).on('keydown', function(event) {
+            //var $modalContainer = $('#modal-container');
+            if (event.key === 'Escape' && $('#modal-container').hasClass('is-visible')) {
                 hideModal();
             }
         });
 
-
-        $(document).ready(function(){
-            $.fn.myFunction = function(){ 
-                alert('You have successfully defined the function!'); 
-            }
-            $(".call-btn").click(function(){
-                $.fn.myFunction();
-            });
-        });
-
+        // $(document).on( 
+        //     'keydown', function(event) { 
+        //       if (event.key == "Escape") { 
+        //           alert('Esc key pressed.'); 
+        //       } 
+        //   }); 
 
 
         // $('#modal-container').on('click', function (event) {
