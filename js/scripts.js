@@ -74,8 +74,12 @@
         function showModal(item) {
             var $modalContainer = $('#modal-container');
 
-            
+            //$ ('#modal-container').on('showMOdal', function(item){
 
+            //$('modalContainer').on('click', function (event) {
+
+
+            //$('#modal-container').on('click', function (event) {
             $modalContainer.text('');
             var $modal = $('<div class = "modal">');
 
@@ -103,6 +107,10 @@
             $modalContainer.addClass('is-visible'); //class
         }
 
+
+        //$('.notification').addClass('bright-red').delay(300).removeClass('bright-red')
+        // Use the syntax $.fn.myFunction=function(){}
+
         function hideModal() {
             var $modalContainer = $('#modal-container');
             $modalContainer.removeClass('is-visible');
@@ -116,21 +124,20 @@
         });
 
 
-        // var closestElement = element.closest(selectors);
-        // https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+        $(document).ready(function(){
+            $.fn.myFunction = function(){ 
+                alert('You have successfully defined the function!'); 
+            }
+            $(".call-btn").click(function(){
+                $.fn.myFunction();
+            });
+        });
 
 
-        // var $modalContainer = $('#modal-container');
-// and then:
-// $modalContainer.on('click', function (event) {...
 
-//But with jQuery you can do it directly, without creating a var:
+        // $('#modal-container').on('click', function (event) {
 
-//$('#modal-container').on('click', function (event) {
-
-        //var $modalContainer = $('#modal-container');
-
-        $('modalContainer').on('click', function (event) {
+        $('#modal-container').on('click', function (event) {
             if ($(event.target).closest('#modal-container').length) {
                 hideModal();
             }
