@@ -1,3 +1,6 @@
+
+//Master Branch_ // https://github.com/gunt/Jquery_code_pokedex
+
 (function () {
     var pokemonRepository = (function () {
         var repository = [];
