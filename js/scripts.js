@@ -23,6 +23,10 @@
         }
 
         // function addListItem pokemon //button // append
+        // modal Bootstrap
+        // The important attributes on the button are data-toggle="modal" and data-target="#exampleModal".
+
+
         function addListItem(pokemon) {
             $listItemElement = $('<listItemElement class = "pokemon-list__item">' + '<li>');
             $('ul').append($listItemElement);
@@ -72,7 +76,7 @@
             });
         }
 
-        //clearing all existing modal content  // jQuery major attention on classes
+        clearing all existing modal content  // jQuery major attention on classes
         function showModal(item) {
             var $modalContainer =
 
