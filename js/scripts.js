@@ -76,7 +76,7 @@
             });
         }
 
-        clearing all existing modal content  // jQuery major attention on classes
+        //clearing all existing modal content  // jQuery major attention on classes
         function showModal(item) {
             var $modalContainer =
 
