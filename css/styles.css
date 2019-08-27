@@ -264,7 +264,7 @@ button:active {
   /* width: 100%; */
   max-width: 570px;
   min-width: 300px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 15px 10px;
 }
 
