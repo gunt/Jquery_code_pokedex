@@ -1,6 +1,4 @@
-
 //Master Branch_ // https://github.com/gunt/Jquery_code_pokedex
-
 (function () {
     var pokemonRepository = (function () {
         var repository = [];
@@ -21,11 +19,6 @@
                 console.error(e);
             });
         }
-
-        // function addListItem pokemon //button // append
-        // modal Bootstrap
-        // The important attributes on the button are data-toggle="modal" and data-target="#exampleModal".
-
 
         function addListItem(pokemon) {
             $listItemElement = $('<listItemElement class = "pokemon-list__item">' + '<li>');
@@ -92,7 +85,6 @@
             // pokemon image class fixed it - not recognize pokemon as item
             $imageElement = $('<img class = "pokemonimage">');
             $imageElement.attr('src', item.imageUrl);
-
 
             $typesElement = $('<p>' + 'height : ' + item.height + '</p>');
 
