@@ -20,6 +20,33 @@
             });
         }
 
+        function loadDetails(pokemon) {
+            var url = pokemon.detailsUrl;
+            return $.ajax(url).then(function (response) {
+                // Now we add the details to the item
+                pokemon.imageUrl = response.sprites.front_default;
+                pokemon.height = response.height;
+                pokemon.types = Object.keys(response.types);
+            }).catch(function (e) {
+                console.error(e);
+            });
+        }
+
+
+        // if not an object // not display
+        function add(pokemon) {
+            if (typeof repository === 'object') {
+                repository.push(pokemon)
+            } else {
+                console.error('Is not an Object');
+            }
+
+        }
+
+        function getAll() {
+            return repository;
+        }
+
         function addListItem(pokemon) {
             $listItemElement = $('<listItemElement class = "pokemon-list__item">' + '<li>');
             $('ul').append($listItemElement);
@@ -43,33 +70,14 @@
             });
         }
 
-        // if not an object // not display
-        function add(pokemon) {
-            if (typeof repository === 'object') {
-                repository.push(pokemon)
-            } else {
-                console.error('Is not an Object');
-            }
 
-        }
+        
 
-        function getAll() {
-            return repository;
-        }
+        
 
-        function loadDetails(pokemon) {
-            var url = pokemon.detailsUrl;
-            return $.ajax(url).then(function (response) {
-                // Now we add the details to the item
-                pokemon.imageUrl = response.sprites.front_default;
-                pokemon.height = response.height;
-                pokemon.types = Object.keys(response.types);
-            }).catch(function (e) {
-                console.error(e);
-            });
-        }
+        
+//clearing all existing modal content  // jQuery major attention on classes
 
-        //clearing all existing modal content  // jQuery major attention on classes
         function showModal(item) {
             var $modalContainer =
 
