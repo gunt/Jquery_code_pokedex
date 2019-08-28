@@ -48,85 +48,81 @@
         return {
             add: add,
             getAll: getAll,
-            //addListItem: addListItem,
-            //showDetails: showDetails,
             loadList: loadList,
             loadDetails: loadDetails,
-            //showModal: showModal,
-            //hideModal: hideModal
         };
     })();
 
-        function addListItem(pokemon) {
-            
-            // $listItemElement = $('<listItemElement class = "pokemon-list__item">' + '<li>');
-            $listItemElement = $('<div class="pokemon-list__item"></div>');
-            $pokemonList = $('.pokemon-list');
-            $pokemonName = $('<span></span>');
-            //$button = $('<button type = "button">' + pokemon.name + '</button>');
-            $button = $('<button type ="button" class= "button" data-toggle="modal" data-target="#modalContent"</button>');
+    function addListItem(pokemon) {
+        $listItemElement = $('<div class="pokemon-list__item"></div>');
+        $pokemonList = $('.pokemon-list');
+        $pokemonName = $('<span></span>');
+        $button = $('<button type ="button" class= "button" data-toggle="modal" data-target="#modalContent"</button>');
 
-            
-            $listItemElement.append($button);
-            $button.on('click', function () {
-                showDetails(pokemon);
-            });
-        }
+        // Append
+        $listItemElement.append($button);
+        $listItemElement.append($pokemonName);
+        $pokemonName.text(pokemon.name);
+        $pokemonList.append($listItemElement);
+        $button.on('click', function () {
+            showDetails(pokemon);
+        });
+    }
 
-        //calling details of the pokemons
-        function showDetails(pokemon) {
-            pokemonRepository.loadDetails(pokemon).then(function () {
-                //displays details in a modal
-                showModal(pokemon);
-            });
-        }
+    //calling details of the pokemons
+    function showDetails(pokemon) {
+        pokemonRepository.loadDetails(pokemon).then(function () {
+            //displays details in a modal
+            showModal(pokemon);
+        });
+    }
 
 
-        //clearing all existing modal content  // jQuery major attention on classes
+    //clearing all existing modal content  // jQuery major attention on classes
 
-        function showModal(item) {
-            var $modalContainer =
+    function showModal(item) {
+        var $modalContainer = $('.modal-container');
+        
+        
+        $modal = $('<div class = "modal">');
 
-                $('#modal-container').text('');
-            $modal = $('<div class = "modal">');
+        // //close button
+        // $closeButtonElement = $('<button class = "modal-close"> Close </button>');
+        // $closeButtonElement.on('click', hideModal);
 
-            //close button
-            $closeButtonElement = $('<button class = "modal-close"> Close </button>');
-            $closeButtonElement.on('click', hideModal);
+        $nameElement = $('<h1>' + item.name + '</h1>');
 
-            $nameElement = $('<h1>' + item.name + '</h1>');
+        // pokemon image class fixed it - not recognize pokemon as item
+        $imageElement = $('<img class = "pokemonimage">');
+        $imageElement.attr('src', item.imageUrl);
 
-            // pokemon image class fixed it - not recognize pokemon as item
-            $imageElement = $('<img class = "pokemonimage">');
-            $imageElement.attr('src', item.imageUrl);
+        $typesElement = $('<p>' + 'height : ' + item.height + '</p>');
 
-            $typesElement = $('<p>' + 'height : ' + item.height + '</p>');
+        //appending 
+        // $modal.append($closeButtonElement);
+        $modal.append($nameElement);
+        $modal.append($imageElement);
+        $modal.append($typesElement);
+        $modalContainer.append($modal);
+        // $modalContainer.addClass('is-visible');
+    }
 
-            //appending 
-            $modal.append($closeButtonElement);
-            $modal.append($nameElement);
-            $modal.append($imageElement);
-            $modal.append($typesElement);
-            $modalContainer.append($modal);
-            $modalContainer.addClass('is-visible');
-        }
+    // Bootstrap Modal instead
+    // function hideModal() {
+    //     $('#modal-container').removeClass('is-visible');
+    // }
 
-        // Bootstrap Modal instead
-        // function hideModal() {
-        //     $('#modal-container').removeClass('is-visible');
-        // }
+    // $(document).on('keydown', function (event) {
+    //     if (event.key === 'Escape' && $('#modal-container').hasClass('is-visible')) {
+    //         hideModal();
+    //     }
+    // });
 
-        // $(document).on('keydown', function (event) {
-        //     if (event.key === 'Escape' && $('#modal-container').hasClass('is-visible')) {
-        //         hideModal();
-        //     }
-        // });
-
-        // $('#modal-container').on('click', function (event) {
-        //     if ($(event.target).closest('#modal-container').length) {
-        //         hideModal();
-        //     }
-        // });
+    // $('#modal-container').on('click', function (event) {
+    //     if ($(event.target).closest('#modal-container').length) {
+    //         hideModal();
+    //     }
+    // });
 
 
     pokemonRepository.loadList().then(function () {
