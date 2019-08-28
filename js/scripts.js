@@ -7,8 +7,8 @@
 
         // Ajax method jQuery
         function loadList() {
-            return $.ajax(apiUrl).then(function (response) {
-                response.results.forEach(function (item) {
+            return $.ajax(apiUrl, {dataType:'json'}).then(function (item) {
+                $.each(item.results, function (index, item) {
                     var pokemon = {
                         name: item.name,
                         detailsUrl: item.url
@@ -20,13 +20,13 @@
             });
         }
 
-        function loadDetails(pokemon) {
-            var url = pokemon.detailsUrl;
-            return $.ajax(url).then(function (response) {
+        function loadDetails(item) {
+            var url = item.detailsUrl;
+            return $.ajax(url, {dataType:'json'}).then(function (details) {
                 // Now we add the details to the item
-                pokemon.imageUrl = response.sprites.front_default;
-                pokemon.height = response.height;
-                pokemon.types = Object.keys(response.types);
+                item.imageUrl = details.sprites.front_default;
+                item.height = details.height;
+                item.types = Object.keys(details.types);
             }).catch(function (e) {
                 console.error(e);
             });
@@ -34,11 +34,12 @@
 
         // if not an object // not display
         function add(pokemon) {
-            if (typeof repository === 'object') {
-                repository.push(pokemon)
-            } else {
-                console.error('Is not an Object');
-            }
+            repository.push(pokemon);
+            // if (typeof repository === 'object') {
+            //     repository.push(pokemon)
+            // } else {
+            //     console.error('Is not an Object');
+            // }
         }
 
         function getAll() {
@@ -53,44 +54,13 @@
         };
     })();
 
-    function addListItem(pokemon) {
-        $listItemElement = $('<div class="pokemon-list__item"></div>');
-        $pokemonList = $('.pokemon-list');
-        $pokemonName = $('<span></span>');
-        $button = $('<button type ="button" class= "button" data-toggle="modal" data-target="#modalContent"</button>');
-
-        // Append
-        $listItemElement.append($button);
-        $listItemElement.append($pokemonName);
-        $pokemonName.text(pokemon.name);
-        $pokemonList.append($listItemElement);
-        $button.on('click', function () {
-            showDetails(pokemon);
-        });
-    }
-
-    //calling details of the pokemons
-    function showDetails(pokemon) {
-        pokemonRepository.loadDetails(pokemon).then(function () {
-            //displays details in a modal
-            showModal(pokemon);
-        });
-    }
-
-
-    //clearing all existing modal content  // jQuery major attention on classes
-
     function showModal(item) {
         var $modalContainer = $('.modal-container');
+        $modalContainer.empty();
         
-        
-        $modal = $('<div class = "modal">');
+        $modal = $('<div class = "modal-body"></div>');
 
-        // //close button
-        // $closeButtonElement = $('<button class = "modal-close"> Close </button>');
-        // $closeButtonElement.on('click', hideModal);
-
-        $nameElement = $('<h1>' + item.name + '</h1>');
+        $nameElement = $('<h1 class="modal-title" id="ModalLabel">' + item.name + '</h1>');
 
         // pokemon image class fixed it - not recognize pokemon as item
         $imageElement = $('<img class = "pokemonimage">');
@@ -107,28 +77,40 @@
         // $modalContainer.addClass('is-visible');
     }
 
-    // Bootstrap Modal instead
-    // function hideModal() {
-    //     $('#modal-container').removeClass('is-visible');
-    // }
+    function addListItem(pokemon) {
+        $listItemElement = $('<div class="pokemon-list__item"></div>');
+        $pokemonList = $('.pokemon-list');
+        $pokemonName = $('<span></span>');
+        $button = $('<button type ="button" class= "btn btn-primary" data-toggle="modal" data-target="#modalContent"</button>');
 
-    // $(document).on('keydown', function (event) {
-    //     if (event.key === 'Escape' && $('#modal-container').hasClass('is-visible')) {
-    //         hideModal();
-    //     }
-    // });
+        // Append
+        $listItemElement.append($button);
+        $listItemElement.append($pokemonName);
+        $pokemonName.text(pokemon.name);
+        $pokemonList.append($listItemElement);
+        $button.on('click', function () {
+            showDetails(pokemon);
+        });
+    }
 
-    // $('#modal-container').on('click', function (event) {
-    //     if ($(event.target).closest('#modal-container').length) {
-    //         hideModal();
-    //     }
-    // });
+    //calling details of the pokemons
+    function showDetails(item) {
+        pokemonRepository.loadDetails(item).then(function () {
+            //displays details in a modal
+            showModal(item);
+        });
+    }
+
+
+    //clearing all existing modal content  // jQuery major attention on classes
+
+    
 
 
     pokemonRepository.loadList().then(function () {
         // Now the data is loaded!
-        pokemonRepository.getAll().forEach(function (pokemon) {
-            pokemonRepository.addListItem(pokemon);
+        $.each(pokemonRepository.getAll(), function (index, pokemon) {
+            addListItem(pokemon);
         });
     });
 })();
