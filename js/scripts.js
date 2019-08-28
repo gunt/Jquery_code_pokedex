@@ -1,4 +1,4 @@
-//Master Branch_ // https://github.com/gunt/Jquery_code_pokedex
+
 (function () {
     var pokemonRepository = (function () {
         var repository = [];
@@ -57,12 +57,12 @@
 
 
     function addListItem(pokemon) {
-        var $listItemElement = $('<li class="list-group-item list-group-item-action"></li>');
-        var $button = $('<button type="button" class="btn btn-outline-primary btn-lg btn-block" data-toggle="modal" data-target="#modalContent"> ' + pokemon.name + '</button>');
+        $listItemElement = $('<li class="list-group-item list-group-item-action"></li>');
+        $button = $('<button type="button" class="btn btn-outline-info btn-lg btn-block" data-toggle="modal" data-target="#modalContent"> ' + pokemon.name + '</button>');
 
-        var $modal = $('<div class="modal-container"></div');
+        $modal = $('<div class="modal-container"></div');
 
-        var $ulElement = $('<ul></ul>');
+        $ulElement = $('<ul></ul>');
 
         $(".pokemon-list").append($listItemElement);
         $("#modal-container").append($modal);
@@ -75,34 +75,10 @@
         
         $pokemonName.text(pokemon.name);
 
-        //  // Append
-        // $listItemElement.append($button);
-        // $listItemElement.append($pokemonName);
-        // $pokemonList.append($listItemElement);
         $button.click(function () {
             showDetails(pokemon);
         });
     }
-
-    // function addListItem(pokemon) {
-    //     var $li = $('<li class="list-group__item list-group-item-info"></li>');
-       
-    //     var $button = $('<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalContent">' + pokemon.name + '</button>');
-        
-    //     var $modal = $('<div class="modal-container"></div>');
-    //     var $ul = $('<ul></ul>');
-    //     $(".pokemon-list").append($li);
-    //     $("#modal-container").append($modal);
-    //     $ul.append($modal);
-    //     $li.append($button);
-      
-    //     $button.on('click', function() {
-    //       showDetails(pokemon)
-    //     });
-    //   };
-
-
-
 
     //calling details of the pokemons
     function showDetails(item) {
