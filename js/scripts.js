@@ -84,8 +84,8 @@
     function showDetails(item) {
         pokemonRepository.loadDetails(item).then(function () {
             
-            var $modalContainer = $('.modalContainer');
-            $modalContainer.empty();
+            //var $modalContainer = $('.modalContainer');
+            $('.modalContainer').empty();
 
             $modal = $('<div class = "modal-body"></div>');
 
@@ -99,7 +99,7 @@
             $modal.append($nameElement);
             $modal.append($imageElement);
             $modal.append($typesElement);
-            $modalContainer.append($modal);
+            $('.modalContainer').append($modal);
         });
     }
 
