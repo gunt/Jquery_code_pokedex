@@ -57,20 +57,52 @@
 
 
     function addListItem(pokemon) {
-        $listItemElement = $('<div class="list-group-item list-group-item-action"></div>');
+        var $listItemElement = $('<li class="list-group-item list-group-item-action"></li>');
+        var $button = $('<button type="button" class="btn btn-outline-primary btn-lg btn-block" data-toggle="modal" data-target="#modalContent"> ' + pokemon.name + '</button>');
+
+        var $modal = $('<div class="modal-container"></div');
+
+        var $ulElement = $('<ul></ul>');
+
+        $(".pokemon-list").append($listItemElement);
+        $("#modal-container").append($modal);
+        $ulElement.append($modal);
+        $listItemElement.append($button);
+
+
         $pokemonList = $('.pokemon-list');
         $pokemonName = $('<h1 class="row justify-content-center" </h1>');
-        $button = $('<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalContent"></button>');
+        
         $pokemonName.text(pokemon.name);
 
-         // Append
-        $listItemElement.append($button);
-        $listItemElement.append($pokemonName);
-        $pokemonList.append($listItemElement);
+        //  // Append
+        // $listItemElement.append($button);
+        // $listItemElement.append($pokemonName);
+        // $pokemonList.append($listItemElement);
         $button.click(function () {
             showDetails(pokemon);
         });
     }
+
+    // function addListItem(pokemon) {
+    //     var $li = $('<li class="list-group__item list-group-item-info"></li>');
+       
+    //     var $button = $('<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalContent">' + pokemon.name + '</button>');
+        
+    //     var $modal = $('<div class="modal-container"></div>');
+    //     var $ul = $('<ul></ul>');
+    //     $(".pokemon-list").append($li);
+    //     $("#modal-container").append($modal);
+    //     $ul.append($modal);
+    //     $li.append($button);
+      
+    //     $button.on('click', function() {
+    //       showDetails(pokemon)
+    //     });
+    //   };
+
+
+
 
     //calling details of the pokemons
     function showDetails(item) {
