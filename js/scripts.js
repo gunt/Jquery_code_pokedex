@@ -1,4 +1,3 @@
-
 (function () {
     var pokemonRepository = (function () {
         var repository = [];
@@ -34,7 +33,7 @@
             });
         }
 
-        
+
         function add(pokemon) {
             if (typeof repository === 'object') {
                 repository.push(pokemon)
@@ -72,7 +71,7 @@
 
         $pokemonList = $('.pokemon-list');
         $pokemonName = $('<h1 class="row justify-content-center" </h1>');
-        
+
         $pokemonName.text(pokemon.name);
 
         $button.click(function () {
@@ -83,7 +82,7 @@
     //calling details of the pokemons
     function showDetails(item) {
         pokemonRepository.loadDetails(item).then(function () {
-            
+
             //var $modalContainer = $('.modalContainer');
             $('.modalContainer').empty();
 
