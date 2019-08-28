@@ -60,15 +60,11 @@
         function addListItem(pokemon) {
             
             // $listItemElement = $('<listItemElement class = "pokemon-list__item">' + '<li>');
-            $listItemElement = $('<listItemElement class = "pokemon-list__item">' + '<li>');
-            
+            $listItemElement = $('<div class="pokemon-list__item"></div>');
             $pokemonList = $('.pokemon-list');
-            $pokemonName = $('<span')
+            $pokemonName = $('<span></span>');
             //$button = $('<button type = "button">' + pokemon.name + '</button>');
             $button = $('<button type ="button" class= "button" data-toggle="modal" data-target="#modalContent"</button>');
-
-
-            
 
             
             $listItemElement.append($button);
