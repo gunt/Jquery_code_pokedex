@@ -69,7 +69,7 @@
         $listItemElement.append($button);
 
 
-        $pokemonList = $('.pokemon-list');
+        //$pokemonList = $('.pokemon-list'); // this variable is never use // I leeave this comment on purpose to relearn the code and check it again
         $pokemonName = $('<h1 class="row justify-content-center" </h1>');
 
         $pokemonName.text(pokemon.name);
